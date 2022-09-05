@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>台指選擇權</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+
+t1 {
+    color: #04bb75;
+    text-align:center;
+    font-size:4em;
+    font-weight: bold;
+    text-decoration:underline;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+  tend {
+    color: #3e42ff;
+    text-align:center;
+    font-size:4em;
+    font-weight: bold;
+    text-decoration:underline;
+    line-height: 1.5;
+    margin: 0 14em 0 14em;
+  }
+
+  p {
+    color: #271d17;
+    text-align:left;
+    font-size:1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    text-indent:60px;
+    margin: 0 0 0.5em 0;
+  }
+
+  p2 {
+    color: #271d17;
+    text-align:left;
+    font-size:1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+  p3 {
+    color: #b400ab;
+    text-align:left;
+    font-size:1.5em;
+    text-decoration:underline;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+  #chartdiv {
+			width: 100%;
+			height: 500px;
+			}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-theme-l1">&nbsp</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>目錄</b></h4>
+  <a class="w3-bar-item w3-button w3-hover-black" href="index.html">介紹</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="Kuan_resume.html">組員履歷</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="stady.html">學習成果</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="Presontation.html">機器學習成果</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="tools.html">使用工具</a>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+            <h1 class="w3-text-teal">台指選擇權</h1>
+            <p>投資心法 與 資料科學 相遇</p>
+            <t2>111年度人工智慧產業專業人才發展基地
+                Python人工智慧與資料科學人才養成班第01期</t2>
+            <t2>企業專題實作成果發表</t2>
+        </div>
+    </div>
+    <div id="chartdiv"></div>
+<!-- END MAIN -->
+</div>
+
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<script>
+    var root = am5.Root.new("chartdiv");
+
+    // Set themes
+    // https://www.amcharts.com/docs/v5/concepts/themes/
+    root.setThemes([
+    am5themes_Animated.new(root)
+    ]);
+
+    // Create chart
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/
+    var chart = root.container.children.push(
+    am5xy.XYChart.new(root, {
+        panX: false,
+        panY: false,
+        wheelX: "panX",
+        wheelY: "zoomX",
+        layout: root.verticalLayout,
+        arrangeTooltips: false
+    })
+    );
+
+    // Use only absolute numbers
+    chart.getNumberFormatter().set("numberFormat", "#.#s");
+
+    // Add legend
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+    var legend = chart.children.push(
+    am5.Legend.new(root, {
+        centerX: am5.p50,
+        x: am5.p50
+    })
+    );
+
+    // Data
+    var data = [
+    {
+        Exercise_Price: "14800",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "14900",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "15000",
+        Call: -0,
+        Put: 205
+    },
+    {
+        Exercise_Price: "15100",
+        Call: -0,
+        Put: 956
+    },
+    {
+        Exercise_Price: "15200",
+        Call: -0,
+        Put: 141
+    },
+    {
+        Exercise_Price: "15300",
+        Call: -0,
+        Put: 124
+    },
+    {
+        Exercise_Price: "15400",
+        Call: -0,
+        Put: 392
+    },
+    {
+        Exercise_Price: "15500",
+        Call: -0,
+        Put: 1267
+    },
+    {
+        Exercise_Price: "15600",
+        Call: -0,
+        Put: 1652
+    },
+    {
+        Exercise_Price: "15700",
+        Call: -0,
+        Put: 2625
+    },
+    {
+        Exercise_Price: "15800",
+        Call: -3,
+        Put: 3396
+    },
+    {
+        Exercise_Price: "15900",
+        Call: -1,
+        Put: 5441
+    },
+    {
+        Exercise_Price: "16000",
+        Call: -13,
+        Put: 6015
+    },
+    {
+        Exercise_Price: "16100",
+        Call: -17,
+        Put: 5626
+    },
+    {
+        Exercise_Price: "16150",
+        Call: -2,
+        Put: 3140
+    },
+    {
+        Exercise_Price: "16200",
+        Call: -27,
+        Put: 7520
+    },
+    {
+        Exercise_Price: "16250",
+        Call: -112,
+        Put: 6252
+    },
+    {
+        Exercise_Price: "16300",
+        Call: -196,
+        Put: 8240
+    },
+    {
+        Exercise_Price: "16350",
+        Call: -352,
+        Put: 6614
+    },
+    {
+        Exercise_Price: "16400",
+        Call: -876,
+        Put: 9338
+    },
+    {
+        Exercise_Price: "16450",
+        Call: -3141,
+        Put: 7144
+    },
+    {
+        Exercise_Price: "16500",
+        Call: -6314,
+        Put: 7753
+    },
+    {
+        Exercise_Price: "16550",
+        Call: -6966,
+        Put: 4424
+    },
+    {
+        Exercise_Price: "16600",
+        Call: -9487,
+        Put: 5866
+    },
+    {
+        Exercise_Price: "16650",
+        Call: -11707,
+        Put: 3191
+    },
+    {
+        Exercise_Price: "16700",
+        Call: -12095,
+        Put: 2324
+    },
+    {
+        Exercise_Price: "16750",
+        Call: -7176,
+        Put: 689
+    },
+    {
+        Exercise_Price: "16800",
+        Call: -8061,
+        Put: 641
+    },
+    {
+        Exercise_Price: "16850",
+        Call: -5697,
+        Put: 226
+    },
+    {
+        Exercise_Price: "16900",
+        Call: -5693,
+        Put: 239
+    },
+    {
+        Exercise_Price: "16950",
+        Call: -4625,
+        Put: 27
+    },
+    {
+        Exercise_Price: "17000",
+        Call: -7057,
+        Put: 33
+    },
+    {
+        Exercise_Price: "17050",
+        Call: -4018,
+        Put: 17
+    },
+    {
+        Exercise_Price: "17100",
+        Call: -3385,
+        Put: 10
+    },
+    {
+        Exercise_Price: "17150",
+        Call: -1716,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17200",
+        Call: -1873,
+        Put: 1
+    },
+    {
+        Exercise_Price: "17250",
+        Call: -667,
+        Put: 1
+    },
+    {
+        Exercise_Price: "17300",
+        Call: -2634,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17400",
+        Call: -1899,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17500",
+        Call: -1428,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17600",
+        Call: -105,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17700",
+        Call: -13,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17800",
+        Call: -3,
+        Put: 0
+    },
+    {
+        Exercise_Price: "17900",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18000",
+        Call: -1,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18100",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18200",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18300",
+        Call: -0,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18400",
+        Call: -10,
+        Put: 0
+    },
+    {
+        Exercise_Price: "18500",
+        Call: -2,
+        Put: 0
+    },
+    ];
+
+    // Create axes
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+    var yAxis = chart.yAxes.push(
+    am5xy.CategoryAxis.new(root, {
+        categoryField: "Exercise_Price",
+        renderer: am5xy.AxisRendererY.new(root, {
+        inversed: true,
+        cellStartLocation: 0.1,
+        cellEndLocation: 0.9
+        })
+    })
+    );
+
+    yAxis.data.setAll(data);
+
+    var xAxis = chart.xAxes.push(
+    am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererX.new(root, {})
+    })
+    );
+
+    // Add series
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    function createSeries(field, labelCenterX, pointerOrientation, rangeValue) {
+    var series = chart.series.push(
+        am5xy.ColumnSeries.new(root, {
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueXField: field,
+        categoryYField: "Exercise_Price",
+        sequencedInterpolation: true,
+        clustered: false,
+        tooltip: am5.Tooltip.new(root, {
+            pointerOrientation: pointerOrientation,
+            labelText: "{categoryY}: {valueX}"
+        })
+        })
+    );
+
+    series.columns.template.setAll({
+        height: am5.p100
+    });
+
+    series.bullets.push(function() {
+        return am5.Bullet.new(root, {
+        locationX: 1,
+        locationY: 0.5,
+        sprite: am5.Label.new(root, {
+            centerY: am5.p50,
+            text: "{valueX}",
+            populateText: true,
+            centerX: labelCenterX
+        })
+        });
+    });
+
+    series.data.setAll(data);
+    series.appear();
+
+    var rangeDataItem = xAxis.makeDataItem({
+        value: rangeValue
+    });
+    xAxis.createAxisRange(rangeDataItem);
+    rangeDataItem.get("grid").setAll({
+        strokeOpacity: 1,
+        stroke: series.get("stroke")
+    });
+
+    var label = rangeDataItem.get("label");
+    label.setAll({
+        text: field.toUpperCase(),
+        fontSize: "1.1em",
+        fill: series.get("stroke"),
+        paddingTop: 10,
+        isMeasured: false,
+        centerX: labelCenterX
+    });
+    label.adapters.add("dy", function() {
+        return -chart.plotContainer.height();
+    });
+
+    return series;
+    }
+
+    createSeries("Call", am5.p100, "right", -3);
+    createSeries("Put", 0, "left", 4);
+
+    // Add cursor
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+    var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+    behavior: "zoomY"
+    }));
+    cursor.lineY.set("forceHidden", true);
+    cursor.lineX.set("forceHidden", true);
+
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    chart.appear(1000, 100);
+</script>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>

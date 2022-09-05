@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+
+t1 {
+    color: #04bb75;
+    text-align:center;
+    font-size:4em;
+    font-weight: bold;
+    text-decoration:underline;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+  tend {
+    color: #3e42ff;
+    text-align:center;
+    font-size:4em;
+    font-weight: bold;
+    text-decoration:underline;
+    line-height: 1.5;
+    margin: 0 14em 0 14em;
+  }
+
+  p {
+    color: #271d17;
+    text-align:left;
+    font-size:1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    text-indent:60px;
+    margin: 0 0 0.5em 0;
+  }
+
+  p2 {
+    color: #271d17;
+    text-align:left;
+    font-size:1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+  p3 {
+    color: #b400ab;
+    text-align:left;
+    font-size:1.5em;
+    text-decoration:underline;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-theme-l1">&nbsp</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>目錄</b></h4>
+  <a class="w3-bar-item w3-button w3-hover-black" href="index.html">介紹</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="Kuan_resume.html">組員履歷</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="stady.html">學習成果</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="Presontation.html">機器學習成果</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="tools.html">使用工具</a>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+          <img src="https://drive.google.com/uc?export=view&id=196mT9Cfbxe_OP4aUfY4BMENiYgbd5yr3" width="1000" height="500">
+            <h1 class="w3-text-teal">程式語言Python</h1>
+            <p>Python是一種廣泛使用的直譯式、進階和通用的程式語言,由吉多·范羅蘇姆所創。</p>
+						<p></p>
+						<p>在學習過程中,我們學到如何讀懂Python和利用Python來整理資料集、讀取檔案、網路爬蟲與寫網頁</p>
+        </div>
+    </div>
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <img src="https://drive.google.com/uc?export=view&id=1w1s8aAAhY50wWBc-7gidQwbtm5Lr1uld" width="1000" height="500">
+          <h1 class="w3-text-teal">MySQL</h1>
+          <p>MySQL為資料庫軟體,與其相似的分支為MariaDB</p>
+					<p></p>
+					<p>我們以Python來操作MySQL與MariaDB,來做資料庫的整理與觀察</p>
+      </div>
+  </div>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <img src="https://drive.google.com/uc?export=view&id=1MhKO1a30RNSl7SZ14S83zgbssdjgflyL" width="1000" height="500">
+        <h1 class="w3-text-teal">機器學習</h1>
+        <p>機器學習是人工智慧的一個分支。人工智慧的研究歷史有著一條從以「推理」為重點，到以「知識」為重點，再到以「學習」為重點的自然、清晰的脈絡。</p>
+    </div>
+</div>
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>
